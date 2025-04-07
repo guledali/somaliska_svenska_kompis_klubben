@@ -1,0 +1,20 @@
+future_event:
+  title: Future Event
+  description: This is a future event
+  date: <%= Date.today + 1.week %>
+  location: Future Location
+  capacity: 100
+
+past_event:
+  title: Past Event
+  description: This is a past event
+  date: <%= Date.today - 1.week %>
+  location: Past Location
+  capacity: 50
+
+today_event:
+  title: Today Event
+  description: This is an event happening today
+  date: <%= Date.today %>
+  location: Today Location
+  capacity: 75

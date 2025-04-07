@@ -1,0 +1,19 @@
+community:
+  title: Community Gathering
+  description: Members of our community enjoying time together
+  image_url: https://images.unsplash.com/photo-1511632765486-a01980e01a18
+
+cultural:
+  title: Cultural Exchange
+  description: Sharing stories and experiences
+  image_url: https://images.unsplash.com/photo-1529156069898-49953e39b3ac
+
+learning:
+  title: Learning Session
+  description: Interactive workshop with our community members
+  image_url: https://images.unsplash.com/photo-1515187029135-18ee286d815b
+
+sunset:
+  title: Sunset Gathering
+  description: Friends coming together to celebrate our community
+  image_url: https://images.unsplash.com/photo-1517486808906-6ca8b3f04846

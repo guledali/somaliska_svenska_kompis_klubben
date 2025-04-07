@@ -1,0 +1,15 @@
+kids_learning:
+  title: Kids' Learning
+  description: Interactive educational sessions for children aged 5-12
+  icon: bi bi-people
+  image: https://images.unsplash.com/photo-1544367567-0f2fcb009e0b
+  schedule: Tuesdays 4-6 PM
+  slug: kids-learning
+
+makeup_workshop:
+  title: Makeup Workshops
+  description: Professional makeup tutorials and beauty tips
+  icon: bi bi-cup-hot
+  image: https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9
+  schedule: Wednesdays 6-8 PM
+  slug: makeup-workshops

@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# Contact fixtures
+
+volunteer_inquiry:
+  name: John Doe
+  email: john@example.com
+  message: I'm interested in volunteering for your upcoming community events.
+
+language_exchange_inquiry:
+  name: Jane Smith
+  email: jane@example.com
+  message: Hello, I'd like to participate in your language exchange program. Please provide more information.
+
+kids_learning_question:
+  name: Mohammed Ali
+  email: mohammed@example.com
+  message: When is the next kids' learning session? My children would like to attend.
+
+cooking_class_feedback:
+  name: Sofia Andersson
+  email: sofia@example.com
+  message: I attended the cooking class last week and it was fantastic! Looking forward to more events like this.

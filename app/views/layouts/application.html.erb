@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
   <head>
     <title><%= content_for(:title) || "Somaliska Svenska Kompis Klubben" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="<%= content_for(:meta_description) || "Somaliska Svenska Kompis Klubben helps create meaningful connections and fosters growth through shared experiences and activities." %>">
+    <meta name="robots" content="index, follow">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -16,12 +18,30 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="canonical" href="<%= request.original_url %>" />
 
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/zephyr/bootstrap.min.css" rel="stylesheet">
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <!-- Flash messages -->
+    <% if flash.any? %>
+      <div class="container mt-3">
+        <% flash.each do |type, message| %>
+          <% flash_class = type.to_s == 'notice' ? 'alert-success' : 'alert-danger' %>
+          <div class="alert <%= flash_class %> alert-dismissible fade show" role="alert">
+            <%= message %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
     <%= yield %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
