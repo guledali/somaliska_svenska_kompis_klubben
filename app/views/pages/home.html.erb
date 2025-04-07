@@ -1,0 +1,161 @@
+<!-- Header with logo -->
+<header class="bg-primary py-3" role="banner">
+  <div class="container">
+    <div class="d-flex align-items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-heart me-2" viewBox="0 0 16 16" aria-hidden="true">
+        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+      </svg>
+      <span class="text-white fs-5">logo will display here (SSKK).</span>
+    </div>
+  </div>
+</header>
+
+<main role="main">
+  <!-- Hero section -->
+  <section class="position-relative d-flex align-items-center" style="min-height: calc(100vh - 56px); background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center bottom; background-size: cover;" aria-label="Hero banner">
+    <div class="container text-white">
+      <div class="row">
+        <div class="col-lg-7 col-md-9">
+          <h1 class="display-2 fw-bold mb-4">Building Stronger Communities Together</h1>
+          <p class="fs-4 mb-5">Join us in creating meaningful connections and fostering growth through shared experiences and activities.</p>
+          <a href="#activities" class="btn btn-primary btn-lg px-5 py-3 rounded-pill">Get Involved</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities section -->
+  <section id="activities" class="py-5">
+    <div class="container">
+      <h2 class="display-4 text-center mb-5 fw-bold">Our Activities</h2>
+
+      <div class="row g-4">
+        <% @activities.each do |activity| %>
+          <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+              <img src="<%= activity.image %>" class="card-img-top" alt="<%= activity.title %>" style="height: 300px; object-fit: cover;">
+              <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="<%= activity.icon %> fs-4 me-2"></i>
+                  <h3 class="h4 mb-0"><%= activity.title %></h3>
+                </div>
+                <p class="text-muted mb-3"><%= activity.description %></p>
+                <p class="text-primary fw-bold mb-4"><%= activity.schedule %></p>
+                <%= link_to "Learn More", activity_path(activity), class: "btn btn-primary w-100" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events section -->
+  <section id="events" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="display-4 text-center mb-5 fw-bold">Upcoming Events</h2>
+
+      <div class="row g-4">
+        <% if @events.any? %>
+          <% @events.each do |event| %>
+            <div class="col-md-6 mb-4">
+              <div class="card shadow-sm h-100">
+                <div class="card-body p-4">
+                  <h5 class="text-primary"><%= event.date.strftime("%B %d, %Y") %></h5>
+                  <h3 class="card-title mb-3"><%= event.title %></h3>
+                  <p class="card-text text-muted mb-4"><%= event.description %></p>
+                  <% if event.location.present? %>
+                    <p class="mb-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt me-2" viewBox="0 0 16 16">
+                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                      </svg>
+                      <%= event.location %>
+                    </p>
+                  <% end %>
+                  <a href="#" class="btn btn-primary px-4">Register Now</a>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-12 text-center">
+            <p class="lead">No upcoming events at the moment. Check back soon!</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery section -->
+  <section id="gallery" class="py-5">
+    <div class="container">
+      <h2 class="display-4 text-center mb-5 fw-bold">Gallery</h2>
+
+      <div class="row g-4">
+        <% @galleries.each do |gallery| %>
+          <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100 overflow-hidden border-0">
+              <img src="<%= gallery.image_url %>"
+                   class="card-img-top rounded"
+                   alt="<%= gallery.title %>"
+                   style="height: 300px; object-fit: cover;">
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Involved section -->
+  <section id="get-involved" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="display-4 text-center mb-5 fw-bold">Get Involved</h2>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow rounded-3">
+            <div class="card-body p-5">
+              <%= form_with model: Contact.new, url: contacts_path, local: true, class: "needs-validation", data: { turbo: false } do |f| %>
+                <div class="mb-4">
+                  <%= f.label :name, class: "form-label fs-5" %>
+                  <%= f.text_field :name, class: "form-control form-control-lg", required: true %>
+                </div>
+
+                <div class="mb-4">
+                  <%= f.label :email, class: "form-label fs-5" %>
+                  <%= f.email_field :email, class: "form-control form-control-lg", required: true %>
+                </div>
+
+                <div class="mb-4">
+                  <%= f.label :message, class: "form-label fs-5" %>
+                  <%= f.text_area :message, class: "form-control form-control-lg", rows: 5, required: true %>
+                </div>
+
+                <div class="text-center mt-5">
+                  <%= f.submit "Send Message", class: "btn btn-primary btn-lg px-5 py-3 rounded-pill" %>
+                </div>
+              <% end %>
+
+              <div class="mt-5 pt-3 border-top">
+                <div class="d-flex align-items-center mb-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-envelope me-3 text-primary" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                  </svg>
+                  <a href="mailto:contact@communityhub.com" class="text-decoration-none fs-5">contact@communityhub.com</a>
+                </div>
+
+                <div class="d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-telephone me-3 text-primary" viewBox="0 0 16 16">
+                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                  </svg>
+                  <span class="fs-5">(555) 123-4567</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
