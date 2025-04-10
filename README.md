@@ -13,6 +13,62 @@ Somaliska Svenska Kompis Klubben är en gemenskapsorganisation dedikerad till at
 
 ## Development Setup
 
+### Installing Ruby and Rails
+
+This project requires Ruby 3.3.6 and Rails 8.0.2. For detailed installation instructions, please refer to the [official Ruby on Rails installation guide](https://guides.rubyonrails.org/install_ruby_on_rails.html).
+
+Quick installation summary:
+
+1. Install Ruby using Mise version manager (recommended):
+
+   **macOS:**
+   ```
+   brew install openssl@3 libyaml gmp rust
+   curl https://mise.run | sh
+   echo 'eval "$(~/.local/bin/mise activate)"' >> ~/.zshrc
+   source ~/.zshrc
+   mise use -g ruby@3
+   ```
+
+   **Windows (WSL):**
+   ```
+   # Install WSL with Ubuntu
+   wsl --install --distribution Ubuntu-24.04
+
+   # Once Ubuntu is installed, open it and run:
+   sudo apt update
+   sudo apt install build-essential rustc libssl-dev libyaml-dev zlib1g-dev libgmp-dev
+
+   # Install Mise version manager
+   curl https://mise.run | sh
+   echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
+   source ~/.bashrc
+
+   # Install Ruby globally with Mise
+   mise use -g ruby@3
+   ```
+
+   **Ubuntu:**
+   ```
+   sudo apt update
+   sudo apt install build-essential rustc libssl-dev libyaml-dev zlib1g-dev libgmp-dev
+   curl https://mise.run | sh
+   echo 'eval "$(~/.local/bin/mise activate)"' >> ~/.bashrc
+   source ~/.bashrc
+   mise use -g ruby@3
+   ```
+
+2. Install Rails:
+   ```
+   gem install rails -v 8.0.2
+   ```
+
+3. Verify your installation:
+   ```
+   ruby --version   # Should show 3.3.6
+   rails --version  # Should show 8.0.2
+   ```
+
 ### Prerequisites
 
 - Ruby 3.3.6
