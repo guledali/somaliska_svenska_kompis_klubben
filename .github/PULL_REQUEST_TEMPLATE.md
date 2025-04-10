@@ -5,7 +5,8 @@ Brief description of changes and why they are needed.
 - [ ] Feature
 - [ ] Bug fix
 - [ ] Code refactoring
+- [ ] Test Coverage
 - [ ] Documentation update
 
-## Tested?
+## Manual Testing?
 - [ ] Yes
