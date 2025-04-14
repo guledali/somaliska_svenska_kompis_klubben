@@ -1,0 +1,43 @@
+#!/bin/sh
+
+echo "🔍 Running pre-push checks..."
+
+# Security scans
+echo "🔒 Running security scans..."
+echo "Running Brakeman (Rails security scan)..."
+bin/brakeman --no-pager
+if [ $? -ne 0 ]; then
+  echo "❌ ERROR: Brakeman found security vulnerabilities! Fix them before pushing."
+  exit 1
+fi
+
+echo "Running ImportMap audit (JS dependencies scan)..."
+bin/importmap audit
+if [ $? -ne 0 ]; then
+  echo "❌ ERROR: ImportMap audit found security vulnerabilities! Fix them before pushing."
+  exit 1
+fi
+
+# Linting
+echo "🧹 Running linters..."
+echo "Running RuboCop..."
+bin/rubocop
+if [ $? -ne 0 ]; then
+  echo "❌ ERROR: RuboCop found style issues! Fix them before pushing."
+  exit 1
+fi
+
+# Tests
+echo "🧪 Running tests..."
+echo "Preparing test database..."
+bin/rails db:test:prepare
+
+echo "Running Rails tests..."
+bin/rails test
+if [ $? -ne 0 ]; then
+  echo "❌ ERROR: Rails tests failed! Fix the tests before pushing."
+  exit 1
+fi
+
+echo "✅ All checks passed. Pushing changes..."
+exit 0

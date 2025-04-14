@@ -21,6 +21,21 @@ Run the following command to set the Git comment character to ';' (this allows #
 git config core.commentChar ';'
 ```
 
+### Git Hooks Setup
+
+This project uses Git hooks to enforce commit message format and run pre-push checks. To set up the hooks:
+
+```bash
+# Copy the hooks to your .git/hooks directory
+cp hooks/* .git/hooks/
+
+# Make sure the hooks are executable
+chmod +x .git/hooks/*
+```
+
+The hooks will:
+- Ensure commit messages start with an issue number (e.g. "#42 Add feature")
+- Run security scans, linting, and tests before pushing
 
 ### Installing Ruby and Rails
 
