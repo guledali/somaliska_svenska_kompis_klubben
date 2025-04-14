@@ -13,6 +13,15 @@ Somaliska Svenska Kompis Klubben är en gemenskapsorganisation dedikerad till at
 
 ## Development Setup
 
+### Git Configuration
+
+Run the following command to set the Git comment character to ';' (this allows # to be used for issue numbers in commit messages):
+
+```
+git config core.commentChar ';'
+```
+
+
 ### Installing Ruby and Rails
 
 This project requires Ruby 3.3.6 and Rails 8.0.2. For detailed installation instructions, please refer to the [official Ruby on Rails installation guide](https://guides.rubyonrails.org/install_ruby_on_rails.html).
