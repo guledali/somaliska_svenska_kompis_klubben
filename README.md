@@ -13,6 +13,15 @@ Somaliska Svenska Kompis Klubben är en gemenskapsorganisation dedikerad till at
 
 ## Development Setup
 
+### Git Configuration
+
+Run the following command to set the Git comment character to ';' (this allows # to be used for issue numbers in commit messages):
+
+```
+git config core.commentChar ';'
+```
+
+
 ### Installing Ruby and Rails
 
 This project requires Ruby 3.3.6 and Rails 8.0.2. For detailed installation instructions, please refer to the [official Ruby on Rails installation guide](https://guides.rubyonrails.org/install_ruby_on_rails.html).
@@ -106,6 +115,61 @@ Quick installation summary:
 rails test
 rails test:system
 ```
+
+### VS Code Setup
+
+For an optimal development experience with Visual Studio Code, we recommend using the Ruby LSP extension by Shopify:
+
+1. Install [VS Code](https://code.visualstudio.com/)
+
+2. Install the [Ruby LSP extension](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp)
+
+3. Configure VS Code settings for Ruby:
+   ```json
+   // .vscode/settings.json
+   {
+     "[ruby]": {
+       "editor.defaultFormatter": "Shopify.ruby-lsp",
+       "editor.formatOnSave": true,
+       "editor.tabSize": 2,
+       "editor.insertSpaces": true,
+       "editor.semanticHighlighting.enabled": true,
+       "editor.formatOnType": true
+     },
+     "rubyLsp.formatter": "rubocop"
+   }
+   ```
+
+4. For debugging support, create a launch configuration:
+   ```json
+   // .vscode/launch.json
+   {
+     "version": "0.2.0",
+     "configurations": [
+       {
+         "type": "ruby_lsp",
+         "name": "Debug Rails",
+         "request": "launch",
+         "program": "${workspaceRoot}/bin/rails",
+         "args": ["server"]
+       },
+       {
+         "type": "ruby_lsp",
+         "request": "launch",
+         "name": "Debug test file",
+         "program": "ruby -Itest ${relativeFile}"
+       }
+     ]
+   }
+   ```
+
+The Ruby LSP extension provides:
+- Semantic highlighting
+- Code navigation and completion
+- RuboCop integration for linting
+- Formatting support
+- Test running and debugging
+- Documentation on hover
 
 ## Bidra
 

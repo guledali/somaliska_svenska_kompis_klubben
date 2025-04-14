@@ -13,3 +13,11 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
   end
 end
+
+# Only run in local test environment, not in CI
+local_environment = !ENV["CI"]
+
+if Rails.env.test? && local_environment
+  # Ensure application_system_test_case.rb is required
+  require_relative "application_system_test_case" if File.exist?(File.join(Rails.root, "test", "application_system_test_case.rb"))
+end
