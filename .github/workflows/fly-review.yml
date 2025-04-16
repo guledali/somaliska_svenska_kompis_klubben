@@ -28,12 +28,18 @@ jobs:
         id: deploy
         uses: superfly/fly-pr-review-apps@1.5.0
         with:
-          # Minimal volume for SQLite data
-          launch_options: --volume data:256MB:/data
           # Enable Tigris storage
           secrets: >
             RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}
             BUCKET_NAME=pr${{ github.event.number }}-app
+
+      - name: Create volume for SQLite data
+        if: github.event.action != 'closed'
+        run: |
+          APP_NAME="pr-${{ github.event.number }}-${{ github.repository_owner }}-${{ github.event.repository.name }}"
+          flyctl volumes list --app $APP_NAME | grep data || flyctl volumes create data --app $APP_NAME --size 256 --region $FLY_REGION
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
       - name: Clean up GitHub environment
         uses: strumwolf/delete-deployment-environment@v2
