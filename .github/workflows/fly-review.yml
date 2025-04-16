@@ -30,6 +30,15 @@ jobs:
           ruby-version: '3.2.0'
           bundler-cache: true
 
+      - name: Install system-wide Bundler
+        run: |
+          sudo gem install bundler
+          echo "$(ruby -e 'puts Gem.bindir')" >> $GITHUB_PATH
+          which bundle
+
+      - name: Install Flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: Deploy app
         id: deploy
         uses: superfly/fly-pr-review-apps@1.5.0
@@ -38,6 +47,10 @@ jobs:
           secrets: >
             RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}
             BUCKET_NAME=pr${{ github.event.number }}-app
+          cpu: 1
+          cpukind: shared
+          memory: 256
+          ha: false
 
       - name: Create volume for SQLite data
         if: github.event.action != 'closed'
