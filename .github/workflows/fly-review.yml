@@ -18,7 +18,7 @@ jobs:
 
     # Create a GitHub deployment environment per review app
     environment:
-      name: pr-${{ github.event.number }}
+      name: review
       url: ${{ steps.deploy.outputs.url }}
 
     steps:
@@ -40,4 +40,4 @@ jobs:
         if: ${{ github.event.action == 'closed' }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          environment: pr-${{ github.event.number }}
+          environment: review
