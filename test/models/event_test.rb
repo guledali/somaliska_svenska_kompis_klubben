@@ -178,4 +178,28 @@ class EventTest < ActiveSupport::TestCase
     @event.location = "Virtual Event"
     assert @event.valid?
   end
+
+  test "should have attendees" do
+    # setup
+    event = events(:future_event)
+
+    # exercise
+    attendee = event.attendees.first
+
+    # verify
+    assert attendee.name, "mike"
+    assert attendee.email, "mike@example.com"
+  end
+
+  test "should destroy associated attendees if event is deleted" do
+    # setup
+    event = events(:future_event)
+    attendee = event.attendees.first
+
+    # exercise
+    event.destroy
+
+    # verify
+    assert_not Attendee.exists?(id: attendee.id)
+  end
 end
