@@ -1,0 +1,8 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# No fixtures needed for contacts controller tests
+
+mike:
+  name: mike
+  email: mike@example.com
+  event: future_event
