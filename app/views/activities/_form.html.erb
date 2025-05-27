@@ -1,0 +1,44 @@
+<%= form_with(model: activity) do |form| %>
+  <% if activity.errors.any? %>
+    <div class="alert alert-danger mb-4">
+      <h2 class="h5 mb-2">
+        <%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:
+      </h2>
+      <ul class="mb-0">
+        <% activity.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, rows: 4, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :icon, class: "form-label" %>
+    <%= form.text_field :icon, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :image, class: "form-label" %>
+    <%= form.text_field :image, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :schedule, class: "form-label" %>
+    <%= form.text_field :schedule, class: "form-control" %>
+  </div>
+
+  <div class="d-flex justify-content-end gap-2">
+    <%= link_to "Cancel", admin_path, class: "btn btn-secondary" %>
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  allow_unauthenticated_access only: :create
+
   def create
     @contact = Contact.new(contact_params)
 
