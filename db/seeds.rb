@@ -8,6 +8,14 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+# Create admin user
+puts "Creating admin user..."
+User.find_or_create_by!(email_address: 'admin@example.com') do |user|
+  user.name = 'Admin'
+  user.password = 'password123'
+  user.password_confirmation = 'password123'
+end
+
 # Create activities
 puts "Creating activities..."
 
@@ -73,35 +81,40 @@ events = [
     description: "Join us for an evening of board games and fun!",
     date: today + 10.days,
     location: "Community Center, Stockholm",
-    capacity: 30
+    capacity: 30,
+    image: "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "Kids Art Workshop",
     description: "Unleash your child's creativity with our art experts",
     date: today + 15.days,
     location: "Arts Studio, Malmö",
-    capacity: 20
+    capacity: 20,
+    image: "https://images.unsplash.com/photo-1560421683-6856ea585c78?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "Swedish-Somali Cultural Festival",
     description: "A celebration of our shared heritage with music, food, and performances",
     date: next_month + 5.days,
     location: "City Park, Gothenburg",
-    capacity: 100
+    capacity: 100,
+    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "Career Networking Event",
     description: "Connect with professionals and explore job opportunities",
     date: next_month + 15.days,
     location: "Business Hub, Stockholm",
-    capacity: 50
+    capacity: 50,
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
   },
   {
     title: "Traditional Dance Workshop",
     description: "Learn traditional Somali and Swedish dances from expert instructors",
     date: next_two_months,
     location: "Dance Studio, Uppsala",
-    capacity: 25
+    capacity: 25,
+    image: "https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
   }
 ]
 

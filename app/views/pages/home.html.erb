@@ -60,6 +60,9 @@
           <% @events.each do |event| %>
             <div class="col-md-6 mb-4">
               <div class="card shadow-sm h-100">
+                <% if event.image.present? %>
+                  <%= image_tag event.image, class: "card-img-top", style: "height: 200px; object-fit: cover;" %>
+                <% end %>
                 <div class="card-body p-4">
                   <h5 class="text-primary"><%= event.date.strftime("%B %d, %Y") %></h5>
                   <h3 class="card-title mb-3"><%= event.title %></h3>

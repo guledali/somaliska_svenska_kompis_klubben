@@ -1,0 +1,14 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h2 mb-0">New Gallery Item</h1>
+    <%= link_to admin_path, class: "btn btn-outline-secondary" do %>
+      <i class="fas fa-arrow-left me-1"></i>Back to Admin
+    <% end %>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <%= render "form", gallery: @gallery %>
+    </div>
+  </div>
+</div>

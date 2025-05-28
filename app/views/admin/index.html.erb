@@ -1,0 +1,54 @@
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex align-items-center">
+      <h1 class="h2 mb-0">Admin Dashboard</h1>
+    </div>
+    <%= button_to session_path, method: :delete, class: "btn btn-outline-danger" do %>
+      <i class="fas fa-sign-out-alt me-1"></i>Logout
+    <% end %>
+  </div>
+
+  <div class="row g-4">
+    <!-- Activities Section -->
+    <div class="col-md-6 col-lg-4">
+      <%= render 'shared/admin_card',
+        title: 'Activities',
+        icon: 'fas fa-calendar-alt',
+        color: 'primary',
+        items: @activities,
+        new_path: new_activity_path,
+        new_button_text: 'New Activity',
+        edit_path_helper: :edit_activity_path,
+        delete_path_helper: :activity_path
+      %>
+    </div>
+
+    <!-- Events Section -->
+    <div class="col-md-6 col-lg-4">
+      <%= render 'shared/admin_card',
+        title: 'Events',
+        icon: 'fas fa-calendar-day',
+        color: 'success',
+        items: @events,
+        new_path: new_event_path,
+        new_button_text: 'New Event',
+        edit_path_helper: :edit_event_path,
+        delete_path_helper: :event_path
+      %>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="col-md-6 col-lg-4">
+      <%= render 'shared/admin_card',
+        title: 'Gallery',
+        icon: 'fas fa-images',
+        color: 'warning',
+        items: @galleries,
+        new_path: new_gallery_path,
+        new_button_text: 'New Gallery Item',
+        edit_path_helper: :edit_gallery_path,
+        delete_path_helper: :gallery_path
+      %>
+    </div>
+  </div>
+</div>
