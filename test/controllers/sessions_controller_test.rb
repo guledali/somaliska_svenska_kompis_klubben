@@ -20,7 +20,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       email_address: @user.email_address,
       password: "password123"
     }
-    assert_redirected_to root_url
+    assert_redirected_to admin_url # should redirect to admin page after successful login
     assert_not_nil cookies["session_id"]
   end
 

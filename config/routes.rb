@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # admin routes
-  get "/admin", to: "admin#index"
+  get "/admin", to: "admin#index", as: :admin
 
   resource :session
   resources :passwords, param: :token
