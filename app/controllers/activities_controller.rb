@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [ :show, :edit, :update, :destroy ]
-  before_action :require_admin, except: [ :show ]
+  allow_unauthenticated_access only: [ :show ]
 
   def index
     @activities = Activity.all
